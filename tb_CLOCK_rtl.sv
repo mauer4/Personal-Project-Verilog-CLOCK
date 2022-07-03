@@ -9,7 +9,7 @@ module tb_CLOCK_rtl();
 
   CLOCK DUT(tb_clk, tb_rst,
                tb_set_min, tb_set_hr, tb_set_AMPM,
-               tb_sec, tb_min, tb_hr, tb_AMPM);
+               tb_sec, tb_min, tb_hr);
 
   initial begin
     tb_clk = 0;
@@ -23,7 +23,12 @@ module tb_CLOCK_rtl();
     tb_rst = 1;
     #2;
     #4;
-    
+    // click rst once
+    tb_rst = 0;
+    #2;
+    tb_rst = 1;
+    #2;
+    #4;
     //click set_min once
     tb_set_min = 1;
     #2;
@@ -43,11 +48,6 @@ module tb_CLOCK_rtl();
     #2;
 
     #2;
-    tb_rst = 0;
-    #2;
-    tb_rst = 1;
-
-    #100000;
     tb_rst = 0;
     #2;
     tb_rst = 1;

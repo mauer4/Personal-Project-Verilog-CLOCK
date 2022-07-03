@@ -10,7 +10,7 @@ module clock_top(input logic CLOCK_50, input logic [3:0] KEY,
     logic [5:0] min ,sec;
 
     CLOCK clk(.clk(CLOCK_50), .rst(KEY[3]), .set_min(~KEY[0]), .set_hr(~KEY[1]),
-              .set_AMPM(~KEY[2]), .sec, .min, .hr, .AMPM);
+              .AM2PM(~KEY[2]), .sec, .min, .hr);
 
     BCD clk_bcd_conversion(.sec, .min, .hr, .AMPM, .HEX0, .HEX1, .HEX2,
                        .HEX3, .HEX4, .HEX5);
