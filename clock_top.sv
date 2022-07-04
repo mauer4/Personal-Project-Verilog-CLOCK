@@ -12,7 +12,17 @@ module clock_top(input logic CLOCK_50, input logic [3:0] KEY,
     CLOCK clk(.clk(CLOCK_50), .rst(KEY[3]), .set_min(~KEY[0]), .set_hr(~KEY[1]),
               .AM2PM(~KEY[2]), .sec, .min, .hr);
 
-    BCD clk_bcd_conversion(.sec, .min, .hr, .AMPM, .HEX0, .HEX1, .HEX2,
-                       .HEX3, .HEX4, .HEX5);
+    logic [3:0] sec_dig1, sec_dig2, min_dig1, min_dig2, hr_dig1, hr_dig2;
+
+    BCD sec_bcd_conversion(.in(sec), .out1(sec_dig1), .out2(sec_dig2));
+    BCD min_bcd_conversion(.in(min), .out1(min_dig1), .out2(min_dig2));
+    BCD hr_bcd_conversion(.in({1'b0,hr}), .out1(hr_dig1), .out2(hr_dig2));
+
+    card7seg sec_1(sec_dig1, HEX0);
+    card7seg sec_2(sec_dig2, HEX1);
+    card7seg min_1(min_dig1, HEX2);
+    card7seg min_2(min_dig2, HEX3);
+    card7seg hr_1(hr_dig1, HEX4);
+    card7seg hr_2(hr_dig2, HEX5);
 
 endmodule: clock_top
