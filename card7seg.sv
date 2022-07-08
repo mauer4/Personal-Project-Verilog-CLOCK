@@ -17,9 +17,9 @@
 `define SW_e    4'b1110
 `define SW_f    4'b1111
 
-`define HEX_Blank 7'b0000000   
-`define HEX_0     7'b1111110
-`define HEX_1     7'b1110111
+`define HEX_Blank 7'b0000000
+`define HEX_0     7'b0111111
+`define HEX_1     7'b0000110
 `define HEX_2     7'b1011011
 `define HEX_3     7'b1001111
 `define HEX_4     7'b1100110
@@ -51,12 +51,11 @@ module card7seg(input logic [3:0] digit_in, output logic [6:0] HEX);
          `SW_a: HEX = ~`HEX_a;
          `SW_b: HEX = ~`HEX_b;
          `SW_c: HEX = ~`HEX_c;
-         `SW_d: HEX = ~`HEX_d;      
+         `SW_d: HEX = ~`HEX_d;
          default: begin
             HEX = ~`HEX_Blank;
          end
       endcase
    end
-   
-endmodule: card7seg
 
+endmodule: card7seg

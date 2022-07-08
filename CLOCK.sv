@@ -3,21 +3,21 @@
 // add counter logic_range
 // check why time resets when going from SET to CLK
 
-module sec_inc_clk(input logic [5:0] sec_in, input logic [5:0] min_in, logic [4:0] hr_in,
+module sec_inc_clk(input logic [5:0] sec_in, input logic [5:0] min_in, input logic [4:0] hr_in,
                input logic set_AMPM,
                output logic [5:0] sec_out, output logic [5:0] min_out, output logic [4:0] hr_out);
    always_comb begin
        min_out = min_in;
        hr_out = hr_in;
-       if(sec_in < 59)
+       if(sec_in < 6'd59)
          sec_out = sec_in + 1'b1;
        else begin
          sec_out = 0;
-         if(min_in < 59)
+         if(min_in < 6'd59)
            min_out = min_in + 1'b1;
          else begin
            min_out = 0;
-           if(hr_in < 23)
+           if(hr_in < 4'd23)
              hr_out = hr_in + 1'b1;
            else
              hr_out = 0;
@@ -34,7 +34,7 @@ module CLOCK(input logic clk, input logic rst,
 
     enum {WAIT, CLK_SET, CLK_RUN} state, next_state;
 
-    logic [15:0] counter, next_counter;
+    logic [25:0] counter, next_counter;
 
     // register for the time
     logic [5:0] next_sec, next_min;
@@ -55,7 +55,7 @@ module CLOCK(input logic clk, input logic rst,
       state <= next_state;
 
     always_comb begin
-      next_state = state;
+      next_state = WAIT;
       case(state)
         WAIT: next_state = CLK_SET;
         CLK_SET: next_state = CLK_RUN;
@@ -65,33 +65,33 @@ module CLOCK(input logic clk, input logic rst,
 
     //clk time registers
     always_ff @(posedge clk) begin
-      if(~rst && state == WAIT) {sec, min, hr, counter} <= 33'b0;
-      else begin
-        if(counter == 16'b0) {sec, min, hr} <= {next_sec, next_min, next_hr};
-      end
+      if(~rst && state == WAIT) {sec, min, hr, counter} <= 43'b0;
+      else if(counter == 26'b0) {sec, min, hr} <= {next_sec, next_min, next_hr};
+
       counter <= next_counter;
-      if(counter == 16'b1100001101010000)
+      if(counter == 26'b10111110101111000010000000)
         counter <= 0;
     end
 
     always_comb begin
       {next_sec, next_min, next_hr} = {sec, min, hr};
       case(state)
-        WAIT: {next_sec, next_min, next_hr, next_counter} = 33'b0;
-        CLK_SET: {next_sec, next_min, next_hr, next_counter} = {7'b0, next_add_min, next_add_hr, 16'b0};
+        WAIT: {next_sec, next_min, next_hr, next_counter} = 43'b0;
+        CLK_SET: {next_sec, next_min, next_hr, next_counter} = {7'b0, next_add_min, next_add_hr, 26'b0};
         CLK_RUN: {next_sec, next_min, next_hr, next_counter} = {sec_increased_out, min_increased_out, hr_increased_out, counter + 1'b1};
       endcase
     end
 
     //SET_CLK register logic
     always_ff @(posedge set_min, negedge rst) begin
-      if(~rst) add_min <= min;
-      else add_min <= next_add_min;
+      //if(~rst) add_min <= min;
+      //else
+      add_min <= next_add_min;
     end
 
     always_ff @(posedge set_hr, negedge rst) begin
       if(~rst) add_hr <= hr;
-      else if(AM2PM) add_hr <= (next_add_hr < 5'd12) ? next_add_hr + 5'd12 : next_add_hr - 5'd12;
+      else if(AM2PM) add_hr <= (next_add_hr < 5'd12) ? next_add_hr + 5'd12 - 1'b1 : next_add_hr - 5'd12 - 1'b1;
       else add_hr <= next_add_hr;
     end
 
@@ -99,8 +99,11 @@ module CLOCK(input logic clk, input logic rst,
       {next_add_min, next_add_hr} = {add_min, add_hr};
       case(state)
         WAIT: {next_add_min, next_add_hr} = {12'b0};
-        CLK_SET: {next_add_min, next_add_hr} = {add_min + 1'b1, add_hr + 1'b1};
-        CLK_RUN: {next_add_min, next_add_hr} = {add_min + 1'b1, add_hr + 1'b1};
+        CLK_SET: begin
+          next_add_min = (add_min < 6'd59) ? add_min + 1'b1 : 0;
+          next_add_hr = (add_hr < 5'd23) ? add_hr + 1'b1 : 0;
+        end
+        CLK_RUN: {next_add_min, next_add_hr} = {min, hr};
       endcase
     end
 

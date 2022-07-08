@@ -59,49 +59,48 @@ R4
 R5
 vCLOCK
 R0
-Z6 !s110 1656872822
+Z6 !s110 1657117496
 !i10b 1
 !s100 [Re0KbJaej9`hl0bOU^Qz2
-I^ifARY78iVUln=HgbfW8M2
+I[]2>08KO_d>UgCU;<c7AS1
 R1
 Z7 !s105 CLOCK_sv_unit
 S1
 R2
-Z8 w1656872814
-Z9 8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
-Z10 FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
+Z8 w1656949238
+Z9 8CLOCK.sv
+Z10 FCLOCK.sv
 L0 31
 R3
 r1
 !s85 0
 31
-Z11 !s108 1656872822.000000
-Z12 !s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
-Z13 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
+Z11 !s108 1657117496.000000
+Z12 !s107 CLOCK.sv|
+Z13 !s90 -reportprogress|300|CLOCK.sv|
 !i113 1
-R4
 R5
 n@c@l@o@c@k
 vclock_top
 R0
-!s110 1656896339
+!s110 1657117471
 !i10b 1
-!s100 l4SknDkB_EW:@RU1nng>h2
-IG=@;[=K:3?3E42MoSc3940
+!s100 4LNRiz[HB?;8XM?1HJKDh1
+IJgV<@acJQk]z241GI<fK32
 R1
 !s105 clock_top_sv_unit
 S1
 R2
-w1656896167
+w1656949205
 8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv
 FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv
-L0 3
+L0 5
 R3
 r1
 !s85 0
 31
-!s108 1656896339.000000
-!s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv|
+!s108 1657117471.000000
+!s107 CLOCK.sv|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv|
 !i113 1
 R4
@@ -117,16 +116,16 @@ R7
 S1
 R2
 w1656521449
-R9
-R10
+8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
+FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
 L0 4
 R3
 r1
 !s85 0
 31
 !s108 1656521451.000000
-R12
-R13
+!s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
 !i113 1
 R4
 R5
@@ -134,8 +133,8 @@ vsec_inc_clk
 R0
 R6
 !i10b 1
-!s100 DZ0j<=ZVjQNBOh`5N<MoZ0
-I?=Q_j[8IBXA1PMD[OgJk@3
+!s100 `H2:oHSUPjmnHa6d`N]k?3
+IN@ZYPg>M[A@K?k0YImF]Y2
 R1
 R7
 S1
@@ -152,7 +151,6 @@ R11
 R12
 R13
 !i113 1
-R4
 R5
 vtb_BCD_rtl
 R0

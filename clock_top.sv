@@ -1,4 +1,8 @@
 `timescale 1 ps / 1 ps
+`include "CLOCK.sv"
+`include "card7seg.sv"
+`include "BCD.sv"
+
 
 module clock_top(input logic CLOCK_50, input logic [3:0] KEY,
              input logic [9:0] SW, output logic [9:0] LEDR,
@@ -9,8 +13,8 @@ module clock_top(input logic CLOCK_50, input logic [3:0] KEY,
     logic [4:0] hr;
     logic [5:0] min ,sec;
 
-    CLOCK clk(.clk(CLOCK_50), .rst(KEY[3]), .set_min(~KEY[0]), .set_hr(~KEY[1]),
-              .AM2PM(~KEY[2]), .sec, .min, .hr);
+    CLOCK clk_module(.clk(CLOCK_50), .rst(KEY[3]), .set_min(~KEY[0]), .set_hr(~KEY[1]),
+              .AM2PM(~KEY[2]), .sec(sec), .min(min), .hr(hr));
 
     logic [3:0] sec_dig1, sec_dig2, min_dig1, min_dig2, hr_dig1, hr_dig2;
 
