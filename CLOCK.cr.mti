@@ -19,6 +19,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	BCD
 
+} {} {}} {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module tb_CLOCK_rtl
+
+Top level modules:
+	tb_CLOCK_rtl
+
 } {} {}} {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module CLOCK
@@ -28,13 +35,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	clock_top
-
-} {} {}} {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module tb_CLOCK_rtl
-
-Top level modules:
-	tb_CLOCK_rtl
 
 } {} {}} {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_BCD_rtl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_BCD_rtl.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016

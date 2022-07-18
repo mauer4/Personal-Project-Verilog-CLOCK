@@ -6,9 +6,9 @@ module CLOCK(input logic clk, input logic rst,
              input logic set_min, input logic set_hr, input logic AM2PM,
              output logic [5:0] sec, output logic [5:0] min, output logic [4:0] hr);
 
-    enum bit {CLK_RUN, CLK_SET} TMOD;
+    enum bit [1:0] {SETUP, CLK_RUN, CLK_SET} TMOD;
 
-    logic [25:0] counter, next_counter;
+    logic [25:0] counter;
     logic rst_counter;
 
     // register for the time
@@ -18,39 +18,52 @@ module CLOCK(input logic clk, input logic rst,
     logic inc_sec, inc_min, inc_hr;
 
     //state transition logic
-    always_ff @(negedge rst)
-      TMOD <= (TMOD == CLK_RUN) ? CLK_SET : CLK_RUN ;
+    always_ff @(negedge rst) begin
+      TMOD <= SETUP;
+      if(TMOD == SETUP) TMOD <= CLK_RUN;
+      else if(TMOD == CLK_RUN) TMOD <= CLK_SET;
+      else if(TMOD == CLK_SET) TMOD <= CLK_RUN;
+    end
 
     //clk time registers
     always_ff @(posedge clk) begin
-      counter <= counter + 1'b1;
-      if(counter == `Fifty_M)
-        counter <= 0;
+      if(TMOD == SETUP) counter <= 0;
+      else begin
+        counter <= counter + 1'b1;
+        if(counter == `Fifty_M)
+          counter <= 0;
+      end
     end
 
     assign rst_counter = (counter == `Fifty_M) ? 1'b1 : 1'b0;
-    assign inc_sec = TMOD ? 1'b0 : rst_counter;
+    assign inc_sec = (TMOD == CLK_SET)  ? 1'b0 : rst_counter;
 
-    always_ff @(posedge inc_sec)
-      sec <= next_sec;
+    always_ff @(posedge inc_sec) begin
+      if(TMOD == SETUP) sec <= 0;
+      else sec <= next_sec;
+    end
 
     assign rst_sec = (sec == 6'd59) ? 1'b1 : 1'b0;
 
     assign next_sec = rst_sec ? 6'b0 : sec + 1'b1;
 
-    assign inc_min = TMOD ? set_min : rst_sec;
+    assign inc_min = (TMOD == CLK_SET) ? set_min : rst_sec;
 
-    always_ff @(posedge inc_min)
-      min <= next_min;
+    always_ff @(posedge inc_min) begin
+      if(TMOD == SETUP) min <= 0;
+      else min <= next_min;
+    end
 
     assign rst_min = (min == 6'd59) ? 1'b1 : 1'b0;
 
     assign next_min = rst_min ? 6'b0 : min + 1'b1;
 
-    assign inc_hr = TMOD ? set_hr : rst_min;
+    assign inc_hr = (TMOD == CLK_SET) ? set_hr : rst_min;
 
-    always_ff @(posedge inc_hr)
-      hr <= next_hr;
+    always_ff @(posedge inc_hr) begin
+      if(TMOD == SETUP) hr <= 0;
+      else hr <= next_hr;
+    end
 
     assign rst_hr = (hr == 5'd23) ? 1'b1 : 1'b0;
 

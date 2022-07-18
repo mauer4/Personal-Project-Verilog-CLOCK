@@ -59,15 +59,15 @@ R10
 R11
 vCLOCK
 R0
-!s110 1658156567
+!s110 1658171609
 !i10b 1
-!s100 lgK[VKbKGgNV`8CJChMHP3
-IYhY^bZTBUHzlEP80KzHZQ2
+!s100 WXJF:k9Rg06:L=6^bEl?C3
+I9_A5ell48`BFdNOQ22BCf2
 R2
 Z12 !s105 CLOCK_sv_unit
 S1
 R4
-w1658156508
+w1658171607
 Z13 8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
 Z14 FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
 L0 5
@@ -75,7 +75,7 @@ R6
 r1
 !s85 0
 31
-!s108 1658156567.000000
+!s108 1658171608.000000
 !s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
 Z15 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
 !i113 1
@@ -180,15 +180,15 @@ R11
 ntb_@b@c@d_rtl
 vtb_CLOCK_rtl
 R0
-R16
+!s110 1658171501
 !i10b 1
-!s100 2@4R^?GiJl9_n0m@4_d]N1
-ICb<0j[n``4md`^4BdSI=H2
+!s100 P;Cl^H49WIg?kng2>_WZn3
+IMK3mTL:J>lGXYFnmI5L`O3
 R2
 !s105 tb_CLOCK_rtl_sv_unit
 S1
 R4
-R5
+w1658171499
 8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv
 FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv
 L0 3
@@ -196,7 +196,7 @@ R6
 r1
 !s85 0
 31
-R17
+!s108 1658171501.000000
 !s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_CLOCK_rtl.sv|
 !i113 1
