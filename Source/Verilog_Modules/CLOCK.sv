@@ -58,8 +58,6 @@ module CLOCK(input logic clk, input logic rst, input logic set_TMOD,
 
     assign rst_min = (min == 6'd59) ? 1'b1 : 1'b0;
 
-    assign next_min = rst_min ? 6'b0 : min + 1'b1;
-
     assign inc_hr = (TMOD == CLK_SET) ? set_hr : (min == 6'b0);
 
     always_ff @(posedge inc_hr) begin
@@ -69,7 +67,5 @@ module CLOCK(input logic clk, input logic rst, input logic set_TMOD,
     end
 
     assign rst_hr = (hr == 5'd23) ? 1'b1 : 1'b0;
-
-    assign next_hr = rst_hr ? 5'b0 : hr + 1'b1;
 
 endmodule: CLOCK
