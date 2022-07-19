@@ -6,7 +6,7 @@ module CLOCK(input logic clk, input logic rst, input logic set_TMOD,
              input logic set_min, input logic set_hr,
              output logic [5:0] sec, output logic [5:0] min, output logic [4:0] hr);
 
-    enum bit [1:0] {CLK_RUN, CLK_SET} TMOD;
+    enum bit {CLK_RUN, CLK_SET} TMOD;
 
     logic [25:0] counter;
     logic rst_counter;
@@ -42,29 +42,30 @@ module CLOCK(input logic clk, input logic rst, input logic set_TMOD,
 
     always_ff @(posedge inc_sec) begin
       if(~rst) sec <= 0;
-      else sec <= next_sec;
+      else if(rst_sec) sec <= 0;
+      else sec <= sec + 1'b1;
     end
 
     assign rst_sec = (sec == 6'd59) ? 1'b1 : 1'b0;
 
-    assign next_sec = rst_sec ? 6'b0 : sec + 1'b1;
-
-    assign inc_min = (TMOD == CLK_SET) ? set_min : rst_sec;
+    assign inc_min = (TMOD == CLK_SET) ? set_min : (sec == 6'b0);
 
     always_ff @(posedge inc_min) begin
       if(~rst) min <= 0;
-      else min <= next_min;
+      else if(rst_min) min <= 0;
+      else min <= min + 1'b1;
     end
 
     assign rst_min = (min == 6'd59) ? 1'b1 : 1'b0;
 
     assign next_min = rst_min ? 6'b0 : min + 1'b1;
 
-    assign inc_hr = (TMOD == CLK_SET) ? set_hr : rst_min;
+    assign inc_hr = (TMOD == CLK_SET) ? set_hr : (min == 6'b0);
 
     always_ff @(posedge inc_hr) begin
       if(~rst) hr <= 0;
-      else hr <= next_hr;
+      else if(rst_hr) hr <= 0;
+      else hr <= hr + 1'b1;
     end
 
     assign rst_hr = (hr == 5'd23) ? 1'b1 : 1'b0;

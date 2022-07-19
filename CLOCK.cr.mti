@@ -1,9 +1,9 @@
-{C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv}
+{C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_clock_top_rtl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/tb_clock_top_rtl.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module CLOCK
+-- Compiling module tb_clock_top_rtl
 
 Top level modules:
-	CLOCK
+	tb_clock_top_rtl
 
 } {} {}} {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/card7seg.sv} {1 {vlog -work work -sv -stats=none {C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/card7seg.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
