@@ -168,6 +168,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "KEY[3]",
+					"strict" : false
+				},
+				{
 					"name" : "KEY[0]",
 					"strict" : false
 				},
@@ -176,11 +180,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[3]",
+					"name" : "CLOCK_50",
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
+					"name" : "KEY[2]",
 					"strict" : false
 				}
 			]

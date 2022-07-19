@@ -25,7 +25,25 @@ module tb_clock_top_rtl();
     // click rst once
     tb_KEY[3] = 0;
     #15;
+
+    tb_KEY[2] = 0;
+    #10;
+    tb_KEY[2] = 1;
+
+    tb_KEY[1] = 0;
+    #10;
+    tb_KEY[1] = 1;
+
+    tb_KEY[0] = 0;
+    #10;
+    tb_KEY[0] = 1;
+
     tb_KEY[3] = 1;
+
+
+    assert(DUT.sec == 0) else begin err = 1; $error("sec is not reset"); end
+    assert(DUT.min == 0) else begin err = 1; $error("min is not reset"); end
+    assert(DUT.hr == 0) else begin err = 1; $error("hr is not reset"); end
 
     //wait 5 cycles
     repeat (5) begin
@@ -36,11 +54,14 @@ module tb_clock_top_rtl();
     #15;
     tb_KEY[1] = 1;
 
+    assert(DUT.hr == 1) else begin err = 1; $error("hr is not incremented"); end
     #10;
 
     tb_KEY[1] = 0;
     #15;
     tb_KEY[1] = 1;
+
+    assert(DUT.hr == 2) else begin err = 1; $error("hr is not incremented"); end
 
     repeat (15) begin
       tb_KEY[0] = 0;
@@ -49,10 +70,15 @@ module tb_clock_top_rtl();
       #5;
     end
 
+    assert(DUT.min == 15) else begin err = 1; $error("min is not incremented 15 times"); end
+
     // click rst once
-    tb_KEY[3] = 0;
+    tb_KEY[2] = 0;
     #15;
-    tb_KEY[3] = 1;
+    tb_KEY[2] = 1;
+
+    if(err) $display("FAILED SIMULATION");
+    else $display("SUCCESSFUL SIMULATION");
 
   end
 

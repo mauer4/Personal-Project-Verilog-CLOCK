@@ -1,0 +1,5 @@
+
+State Machine - |clock_top|CLOCK:clk_module|TMOD
+Name TMOD.CLK_RUN 
+TMOD.CLK_SET 0 
+TMOD.CLK_RUN 1 

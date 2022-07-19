@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CLOCK
-Mon Jul 18 18:03:24 2022
+Tue Jul 19 11:42:38 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -17,14 +17,16 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   9. Analysis & Synthesis IP Cores Summary
  10. General Register Statistics
  11. Inverted Register Statistics
- 12. Source assignments for sld_signaltap:auto_signaltap_0
- 13. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
- 14. Port Connectivity Checks: "BCD:hr_bcd_conversion"
- 15. Signal Tap Logic Analyzer Settings
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Connections to In-System Debugging Instance "auto_signaltap_0"
- 19. Analysis & Synthesis Messages
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for sld_signaltap:auto_signaltap_0
+ 14. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
+ 15. Port Connectivity Checks: "BCD:hr_bcd_conversion"
+ 16. Signal Tap Logic Analyzer Settings
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 20. Analysis & Synthesis Messages
+ 21. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -50,7 +52,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Jul 18 18:03:24 2022       ;
+; Analysis & Synthesis Status     ; Successful - Tue Jul 19 11:42:37 2022       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; CLOCK                                       ;
 ; Top-level Entity Name           ; clock_top                                   ;
@@ -170,7 +172,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -246,14 +249,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 335                      ;
+; Estimate of Logic utilization (ALMs needed) ; 336                      ;
 ;                                             ;                          ;
-; Combinational ALUT usage for logic          ; 415                      ;
+; Combinational ALUT usage for logic          ; 420                      ;
 ;     -- 7 input functions                    ; 0                        ;
-;     -- 6 input functions                    ; 86                       ;
+;     -- 6 input functions                    ; 84                       ;
 ;     -- 5 input functions                    ; 80                       ;
-;     -- 4 input functions                    ; 71                       ;
-;     -- <=3 input functions                  ; 178                      ;
+;     -- 4 input functions                    ; 74                       ;
+;     -- <=3 input functions                  ; 182                      ;
 ;                                             ;                          ;
 ; Dedicated logic registers                   ; 550                      ;
 ;                                             ;                          ;
@@ -265,7 +268,7 @@ refer to the applicable agreement for further details.
 ;                                             ;                          ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
 ; Maximum fan-out                             ; 348                      ;
-; Total fan-out                               ; 3805                     ;
+; Total fan-out                               ; 3822                     ;
 ; Average fan-out                             ; 3.40                     ;
 +---------------------------------------------+--------------------------+
 
@@ -275,11 +278,11 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                   ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |clock_top                                                                                                                              ; 415 (1)             ; 550 (0)                   ; 1536              ; 0          ; 67   ; 0            ; |clock_top                                                                                                                                                                                                                                                                                                                                            ; clock_top                         ; work         ;
+; |clock_top                                                                                                                              ; 420 (1)             ; 550 (0)                   ; 1536              ; 0          ; 67   ; 0            ; |clock_top                                                                                                                                                                                                                                                                                                                                            ; clock_top                         ; work         ;
 ;    |BCD:hr_bcd_conversion|                                                                                                              ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|BCD:hr_bcd_conversion                                                                                                                                                                                                                                                                                                                      ; BCD                               ; work         ;
 ;    |BCD:min_bcd_conversion|                                                                                                             ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|BCD:min_bcd_conversion                                                                                                                                                                                                                                                                                                                     ; BCD                               ; work         ;
 ;    |BCD:sec_bcd_conversion|                                                                                                             ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|BCD:sec_bcd_conversion                                                                                                                                                                                                                                                                                                                     ; BCD                               ; work         ;
-;    |CLOCK:clk_module|                                                                                                                   ; 55 (55)             ; 44 (44)                   ; 0                 ; 0          ; 0    ; 0            ; |clock_top|CLOCK:clk_module                                                                                                                                                                                                                                                                                                                           ; CLOCK                             ; work         ;
+;    |CLOCK:clk_module|                                                                                                                   ; 60 (60)             ; 44 (44)                   ; 0                 ; 0          ; 0    ; 0            ; |clock_top|CLOCK:clk_module                                                                                                                                                                                                                                                                                                                           ; CLOCK                             ; work         ;
 ;    |card7seg:hr_1|                                                                                                                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|card7seg:hr_1                                                                                                                                                                                                                                                                                                                              ; card7seg                          ; work         ;
 ;    |card7seg:hr_2|                                                                                                                      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|card7seg:hr_2                                                                                                                                                                                                                                                                                                                              ; card7seg                          ; work         ;
 ;    |card7seg:min_1|                                                                                                                     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |clock_top|card7seg:min_1                                                                                                                                                                                                                                                                                                                             ; card7seg                          ; work         ;
@@ -398,6 +401,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |clock_top|CLOCK:clk_module|sec[0]      ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |clock_top|CLOCK:clk_module|min[4]      ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |clock_top|CLOCK:clk_module|hr[0]       ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |clock_top|CLOCK:clk_module|counter[21] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
 +-------------------------------------------------------+
 ; Source assignments for sld_signaltap:auto_signaltap_0 ;
 +-----------------+-------+------+----------------------+
@@ -499,21 +514,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; arriav_ff             ; 44                          ;
 ;     SCLR              ; 26                          ;
 ;     plain             ; 18                          ;
-; arriav_lcell_comb     ; 112                         ;
+; arriav_lcell_comb     ; 117                         ;
 ;     arith             ; 26                          ;
 ;         1 data inputs ; 26                          ;
-;     normal            ; 86                          ;
+;     normal            ; 91                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 13                          ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 4                           ;
-;         4 data inputs ; 30                          ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 9                           ;
+;         4 data inputs ; 33                          ;
 ;         5 data inputs ; 19                          ;
-;         6 data inputs ; 15                          ;
+;         6 data inputs ; 13                          ;
 ; boundary_port         ; 67                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.50                        ;
-; Average LUT depth     ; 2.27                        ;
+; Average LUT depth     ; 2.42                        ;
 +-----------------------+-----------------------------+
 
 
@@ -531,26 +546,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------+--------------+-----------+--------------------------------+-------------------+-------------------------------------+------------------------------------------------------------------------------------------+
 ; Name                      ; Type         ; Status    ; Partition Name                 ; Netlist Type Used ; Actual Connection                   ; Details                                                                                  ;
 +---------------------------+--------------+-----------+--------------------------------+-------------------+-------------------------------------+------------------------------------------------------------------------------------------+
-; CLOCK:clk_module|hr~1     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|hr~1     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|hr~3     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|hr~3     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|hr~4     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|hr~4     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
+; CLOCK:clk_module|hr~1     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~1               ; N/A                                                                                      ;
+; CLOCK:clk_module|hr~1     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~1               ; N/A                                                                                      ;
+; CLOCK:clk_module|hr~3     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~3               ; N/A                                                                                      ;
+; CLOCK:clk_module|hr~3     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~3               ; N/A                                                                                      ;
+; CLOCK:clk_module|hr~4     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~4               ; N/A                                                                                      ;
+; CLOCK:clk_module|hr~4     ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|hr~4               ; N/A                                                                                      ;
 ; CLOCK:clk_module|hr~5     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
 ; CLOCK:clk_module|hr~5     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
 ; CLOCK:clk_module|hr~9     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
 ; CLOCK:clk_module|hr~9     ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~0    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~0    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~2    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~2    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~3    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~3    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~4    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~4    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~5    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
-; CLOCK:clk_module|min~5    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
+; CLOCK:clk_module|min~0    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~0              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~0    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~0              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~2    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~2              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~2    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~2              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~3    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~3              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~3    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~3              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~4    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~4              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~4    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~4              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~5    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~5              ; N/A                                                                                      ;
+; CLOCK:clk_module|min~5    ; post-fitting ; connected ; Top                            ; post-synthesis    ; CLOCK:clk_module|min~5              ; N/A                                                                                      ;
 ; CLOCK:clk_module|min~6    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
 ; CLOCK:clk_module|min~6    ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
 ; CLOCK:clk_module|state[0] ; post-fitting ; missing   ; Top                            ; post-synthesis    ; GND                                 ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
@@ -597,7 +612,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon Jul 18 18:02:53 2022
+    Info: Processing started: Tue Jul 19 11:42:04 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CLOCK -c CLOCK
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -609,6 +624,8 @@ Info (12021): Found 4 design units, including 4 entities, in source file /users/
 Info (12127): Elaborating entity "clock_top" for the top level hierarchy
 Warning (10034): Output port "LEDR" at clock_top.sv(8) has no driver File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
 Info (12128): Elaborating entity "CLOCK" for hierarchy "CLOCK:clk_module" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 17
+Warning (10036): Verilog HDL or VHDL warning at CLOCK.sv(15): object "next_min" assigned a value but never read File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv Line: 15
+Warning (10036): Verilog HDL or VHDL warning at CLOCK.sv(16): object "next_hr" assigned a value but never read File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv Line: 16
 Info (12128): Elaborating entity "BCD" for hierarchy "BCD:sec_bcd_conversion" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 21
 Warning (10230): Verilog HDL assignment warning at BCD.sv(14): truncated value with size 32 to match size of target (4) File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/BCD.sv Line: 14
 Info (12128): Elaborating entity "card7seg" for hierarchy "card7seg:sec_1" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 25
@@ -632,7 +649,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_99c File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK/db/cmpr_99c.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2022.07.18.18:03:13 Progress: Loading sld5b00757e/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2022.07.19.11:42:26 Progress: Loading sld5b00757e/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -656,6 +673,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file db/ip/s
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld5b00757e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv
     Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK/db/ip/sld5b00757e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
 Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer CLOCK:clk_module|inc_sec File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv Line: 18
     Warning (19017): Found clock multiplexer CLOCK:clk_module|inc_min File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv Line: 18
     Warning (19017): Found clock multiplexer CLOCK:clk_module|inc_hr File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv Line: 18
 Warning (13024): Output pins are stuck at VCC or GND
@@ -671,11 +689,11 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
     Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 10
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Critical Warning (35025): Partially connected in-system debug instance "auto_signaltap_0" to 33 of its 57 required data inputs, trigger inputs, acquisition clocks, and dynamic pins.  There were 0 illegal, 0 inaccessible, and 24 missing sources or connections.
+Info (144001): Generated suppressed messages file C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK/output_files/CLOCK.map.smsg
+Critical Warning (35025): Partially connected in-system debug instance "auto_signaltap_0" to 49 of its 57 required data inputs, trigger inputs, acquisition clocks, and dynamic pins.  There were 0 illegal, 0 inaccessible, and 8 missing sources or connections.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 11 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 7
+Warning (21074): Design contains 10 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
     Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
@@ -686,15 +704,21 @@ Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/clock_top.sv Line: 8
-Info (21057): Implemented 833 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 846 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 749 logic cells
+    Info (21061): Implemented 762 logic cells
     Info (21064): Implemented 12 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
-    Info: Peak virtual memory: 4899 megabytes
-    Info: Processing ended: Mon Jul 18 18:03:24 2022
-    Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:53
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 33 warnings
+    Info: Peak virtual memory: 4912 megabytes
+    Info: Processing ended: Tue Jul 19 11:42:38 2022
+    Info: Elapsed time: 00:00:34
+    Info: Total CPU time (on all processors): 00:00:58
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK/output_files/CLOCK.map.smsg.
 
 
