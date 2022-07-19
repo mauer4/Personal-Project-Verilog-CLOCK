@@ -6,7 +6,7 @@ module CLOCK(input logic clk, input logic rst,
              input logic set_min, input logic set_hr, input logic AM2PM,
              output logic [5:0] sec, output logic [5:0] min, output logic [4:0] hr);
 
-    enum bit [1:0] {SETUP, CLK_RUN, CLK_SET} TMOD;
+    enum bit [1:0] {CLK_RUN, CLK_SET} TMOD;
 
     logic [25:0] counter;
     logic rst_counter;
@@ -19,28 +19,23 @@ module CLOCK(input logic clk, input logic rst,
 
     //state transition logic
     always_ff @(negedge rst) begin
-      TMOD <= SETUP;
-      if(TMOD == SETUP) TMOD <= CLK_RUN;
-      else if(TMOD == CLK_RUN) TMOD <= CLK_SET;
-      else if(TMOD == CLK_SET) TMOD <= CLK_RUN;
+      TMOD <= CLK_SET;
+      if(TMOD == CLK_SET) TMOD <= CLK_RUN;
+      else TMOD <= CLK_SET;
     end
 
     //clk time registers
     always_ff @(posedge clk) begin
-      if(TMOD == SETUP) counter <= 0;
-      else begin
-        counter <= counter + 1'b1;
-        if(counter == `Fifty_M)
-          counter <= 0;
-      end
+        counter <= 0;
+        if(counter != `Fifty_M)
+          counter <= counter + 1'b1;
     end
 
     assign rst_counter = (counter == `Fifty_M) ? 1'b1 : 1'b0;
     assign inc_sec = (TMOD == CLK_SET)  ? 1'b0 : rst_counter;
 
     always_ff @(posedge inc_sec) begin
-      if(TMOD == SETUP) sec <= 0;
-      else sec <= next_sec;
+      sec <= next_sec;
     end
 
     assign rst_sec = (sec == 6'd59) ? 1'b1 : 1'b0;
@@ -50,8 +45,7 @@ module CLOCK(input logic clk, input logic rst,
     assign inc_min = (TMOD == CLK_SET) ? set_min : rst_sec;
 
     always_ff @(posedge inc_min) begin
-      if(TMOD == SETUP) min <= 0;
-      else min <= next_min;
+      min <= next_min;
     end
 
     assign rst_min = (min == 6'd59) ? 1'b1 : 1'b0;
@@ -61,8 +55,7 @@ module CLOCK(input logic clk, input logic rst,
     assign inc_hr = (TMOD == CLK_SET) ? set_hr : rst_min;
 
     always_ff @(posedge inc_hr) begin
-      if(TMOD == SETUP) hr <= 0;
-      else hr <= next_hr;
+      hr <= next_hr;
     end
 
     assign rst_hr = (hr == 5'd23) ? 1'b1 : 1'b0;

@@ -59,15 +59,15 @@ R10
 R11
 vCLOCK
 R0
-!s110 1658171609
+!s110 1658213009
 !i10b 1
-!s100 WXJF:k9Rg06:L=6^bEl?C3
-I9_A5ell48`BFdNOQ22BCf2
+!s100 P65`;dK]]z_fhHLFK5HU=0
+IlPL4bnfNhK4]W2o5B_RB_2
 R2
 Z12 !s105 CLOCK_sv_unit
 S1
 R4
-w1658171607
+w1658213007
 Z13 8C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
 Z14 FC:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv
 L0 5
@@ -75,7 +75,7 @@ R6
 r1
 !s85 0
 31
-!s108 1658171608.000000
+!s108 1658213009.000000
 !s107 C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
 Z15 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Adins Spectre/OneDrive/Documents/verilog_projects/CLOCK.sv|
 !i113 1
