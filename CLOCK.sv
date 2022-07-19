@@ -2,8 +2,8 @@
 `define Fifty_M 26'b10111110101111000010000000
 
 
-module CLOCK(input logic clk, input logic rst,
-             input logic set_min, input logic set_hr, input logic AM2PM,
+module CLOCK(input logic clk, input logic rst, input logic set_TMOD,
+             input logic set_min, input logic set_hr,
              output logic [5:0] sec, output logic [5:0] min, output logic [4:0] hr);
 
     enum bit [1:0] {CLK_RUN, CLK_SET} TMOD;
@@ -18,24 +18,31 @@ module CLOCK(input logic clk, input logic rst,
     logic inc_sec, inc_min, inc_hr;
 
     //state transition logic
-    always_ff @(negedge rst) begin
-      TMOD <= CLK_SET;
-      if(TMOD == CLK_SET) TMOD <= CLK_RUN;
-      else TMOD <= CLK_SET;
+    always_ff @(posedge set_TMOD) begin
+      if(~rst) TMOD <= CLK_SET;
+      else begin
+        if(TMOD == CLK_SET) TMOD <= CLK_RUN;
+        else TMOD <= CLK_SET;
+      end
     end
 
     //clk time registers
     always_ff @(posedge clk) begin
-        counter <= 0;
-        if(counter != `Fifty_M)
-          counter <= counter + 1'b1;
+        if(~rst) counter = 0;
+        else begin
+          if(~rst_counter)
+            counter <= counter + 1'b1;
+          else counter <= 0;
+        end
     end
 
     assign rst_counter = (counter == `Fifty_M) ? 1'b1 : 1'b0;
-    assign inc_sec = (TMOD == CLK_SET)  ? 1'b0 : rst_counter;
+
+    assign inc_sec = (TMOD == CLK_SET)  ? ~rst : rst_counter;
 
     always_ff @(posedge inc_sec) begin
-      sec <= next_sec;
+      if(~rst) sec <= 0;
+      else sec <= next_sec;
     end
 
     assign rst_sec = (sec == 6'd59) ? 1'b1 : 1'b0;
@@ -45,7 +52,8 @@ module CLOCK(input logic clk, input logic rst,
     assign inc_min = (TMOD == CLK_SET) ? set_min : rst_sec;
 
     always_ff @(posedge inc_min) begin
-      min <= next_min;
+      if(~rst) min <= 0;
+      else min <= next_min;
     end
 
     assign rst_min = (min == 6'd59) ? 1'b1 : 1'b0;
@@ -55,7 +63,8 @@ module CLOCK(input logic clk, input logic rst,
     assign inc_hr = (TMOD == CLK_SET) ? set_hr : rst_min;
 
     always_ff @(posedge inc_hr) begin
-      hr <= next_hr;
+      if(~rst) hr <= 0;
+      else hr <= next_hr;
     end
 
     assign rst_hr = (hr == 5'd23) ? 1'b1 : 1'b0;
