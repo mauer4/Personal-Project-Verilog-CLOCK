@@ -35,12 +35,12 @@ The whole system can be seen as a state machine system with two states represent
 - TMOD == 1'b0 : CLK_RUN - this means that the clock is running and incrementing regularly with time
 - TMOD == 1'b1 : CLK_SET - this means that the time has stopped and that the minutes and hours can be incremented manually
 ** More on the states [here](#states) <br>
-<b>Registers:</b>
-1. 26-bit counter. This register is intended to count from [$0$ to $50*10^6$] which is $26'b10111110101111000010000000$ in binary <br>
-and is defined in the CLOCK.sv module as a macro `define Fifty_M
-2. (X2) 6-bit registers for Seconds and Minutes - 6-bits for ranges of [0:59]
-3. (X1) 5-bit register for Hours - 5-bits for range of [0:23].
-4. State Flip-Flop register called TMOD - defines the state as above
+<br>
+<b>Registers:</b><br>
+1. 26-bit counter. This register is intended to count from [$0$ to $50*10^6$] which is $26'b10111110101111000010000000$ in binary and is defined in the CLOCK.sv module as a macro `define Fifty_M <br>
+2. (X2) 6-bit registers for Seconds and Minutes - 6-bits for ranges of [0:59] <br>
+3. (X1) 5-bit register for Hours - 5-bits for range of [0:23]. <br>
+4. State Flip-Flop register called TMOD - defines the state as above <br>
 
 ### States
 <b>CLK_RUN state:</b><br>
