@@ -19,12 +19,12 @@ The idea of this project was to create a simple System Verilog design for a AM/P
 ### Navigating Directories
 - <b> Media: </b> Includes photos of the project, diagrams and a short video of the working design on the FPGA.
 - <b> Simulation: </b> Includes .do files. regress.do includes, when run on Modelsim, just load the top level rtl testbench and runs it. The rest of the `.do` files load the wave signals to the relevant testbenches
-- <b> Source: </b> This directory includes two folders. The Modules include the System-Verilog modules. The modules included are: `card_7seg.sv`, `BCD.sv`, `CLOCK.sv`, and `clock_top.sv` (top-level-module). The Testbenches folder includes all of the corresponding testbenched.
-- <b> Synthesis: </b> Thie directory includes only 2 files. The first, `CLOCK.sof` if the .sof file you can load direcly onto the DE1-SOC board. The other is the DE1-SOC pin assignment file- for the users ease-of-use.
+- <b> Source: </b> This directory includes two folders. The Modules include the System-Verilog modules. The modules included are: `card_7seg.sv`, `BCD.sv`, `CLOCK.sv`, and `clock_top.sv` (top-level-module). The Testbenches folder includes all of the corresponding testbenches.
+- <b> Synthesis: </b> The directory includes only 2 files. The first, `CLOCK.sof` if the .sof file you can load directly onto the DE1-SOC board. The other is the DE1-SOC pin assignment file- for the users ease-of-use.
 
 ## Project Challenges
 Some of the goals of the project were:
-- Asynchrounous Design (multiple clocks used for state transition and for manual time configuration.
+- Asynchronous Design (multiple clocks used for state transition and for manual time configuration.
 - System Verilog Practice
 - Advanced debugging techniques practice (e.g SignalTap)
 - For fun! (To show friends what you can do with hardware design on an FPGA with just 1 driving signal - 50MHz crystal).
@@ -44,14 +44,14 @@ The whole system can be seen as a state machine system with two states represent
 
 ### States
 <b>CLK_RUN state:</b><br>
-The 50MHz clk will increment the counter until $50*10E6$ at which points the inc_min flag will be raised with will increment the seconds register.
+ The 50MHz clk will increment the counter until $50*10E6$ at which points the inc_min flag will be raised with will increment the seconds register.
 The seconds register increments until it gets to $59$ at which point in resets to 0 and the inc_min flag will be raised.
 The minutes register increments in the same way, and once the minutes resets to 0 the inc_hr flag will be raised.
-The hours register incrementes until $23$ and then resets to 0.
-Transitioning to the `CLK_SET` state occurs by presing the physical button on the FPGA (KEY[3]).
+The hours register increments until $23$ and then resets to 0.
+Transitioning to the `CLK_SET` state occurs by pressing the physical button on the FPGA (KEY[3]).
 
 <b>CLK_SET state:</b><br>
-The 50MHz signal is disconnected from the circuit, the counter stopd incrementing. In this state the seconds will stop and the inc_min and inc_hr signals will be determined by 2 physical buttons on the FPGA (KEY[0] and KEY[1]). Pressing one of these will increment either the minutes or the hour. Returning to the `CLK_RUN` state occurs by pressing the physical button on the FPGA (KEY[3]).
+ The 50MHz signal is disconnected from the circuit, the counter stops incrementing. In this state the seconds will stop and the inc_min and inc_hr signals will be determined by 2 physical buttons on the FPGA (KEY[0] and KEY[1]). Pressing one of these will increment either the minutes or the hour. Returning to the `CLK_RUN` state occurs by pressing the physical button on the FPGA (KEY[3]).
 
 ### Hardware Design Diagram
 <p align="center"><img src="/Media/Diagrams/Hardware_CLK_Diagram_B.png" width="80%"></p>
