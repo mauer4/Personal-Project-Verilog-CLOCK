@@ -17,7 +17,7 @@ The idea of this project was to create a simple System Verilog design for a AM/P
 <p align="center">view of the DE1-SOC <b>CLOCK</b> Implementation</p>
 
 ### Navigating Directories
-- <b> Source: </b> VERILOG IN HERE! This directory includes two folders. The Modules include the System-Verilog modules. The modules included are: `card_7seg.sv`, `BCD.sv`, `CLOCK.sv`, and `clock_top.sv` (top-level-module). The Testbenches folder includes all of the corresponding testbenches.
+- <b> Verilog: </b> VERILOG IN HERE! This directory includes two folders. The Modules include the System-Verilog modules. The modules included are: `card_7seg.sv`, `BCD.sv`, `CLOCK.sv`, and `clock_top.sv` (top-level-module). The Testbenches folder includes all of the corresponding testbenches.
 - <b> Media: </b> Includes photos of the project, diagrams and a short video of the working design on the FPGA.
 - <b> Simulation: </b> Includes .do files. regress.do includes, when run on Modelsim, just load the top level rtl testbench and runs it. The rest of the `.do` files load the wave signals to the relevant testbenches
 - <b> Synthesis: </b> The directory includes only 2 files. The first, `CLOCK.sof` if the .sof file you can load directly onto the DE1-SOC board. The other is the DE1-SOC pin assignment file- for the users ease-of-use.
